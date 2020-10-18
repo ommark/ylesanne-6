@@ -42,6 +42,7 @@
     document.getElementById("form").addEventListener("submit", estimateDelivery);
     document.getElementById("form").addEventListener("submit", validate_form); 
     document.getElementById("form").addEventListener("submit", checkNames);
+    document.getElementById("form").addEventListener("submit", checkNames2);
     document.getElementById("form").addEventListener("submit", kokku); 
 
     function estimateDelivery(event) {
@@ -80,11 +81,11 @@
         function checkNames(){
             var eesnimi = document.getElementById("fname").value;
             var perenimi = document.getElementById("lname").value;
-            var hasNumber = /\d/;
 
             if (eesnimi != '' && perenimi !=''){
                 return true;
             } 
+            
             else {
                 alert("Palun sisestage ees- ja perenimi");
                 return false;
@@ -92,6 +93,21 @@
             
         }
 
+        function checkNames2(){
+            var eesnimi = document.getElementById("fname").value;
+            var perenimi = document.getElementById("lname").value;
+            var onNumber = /\d/;
+
+            if (onNumber.test(eesnimi.value) === true || onNumber.test(perenimi.value) === true){
+                alert("Nimeväljad ei tohi sisaldada numbreid")
+                return;
+            }
+
+        }
+
+        /* else if (hasNumber.test(eesnimi.value) === true || hasNumber.test(perenimi.value === true){
+            alert("Nimeväljad ei tohi sisestada numbreid")
+            return; */
 
         function validate_form(){
             var tarne1 = document.getElementById("v1").checked;
@@ -124,7 +140,7 @@
 
 // map
 
-var mapAPIKey = "AqLLRE37SJGqIxXEYxezPUa6fF2oCzl3cvG4n05FtFIVBrotBYxchpMYYpwuxBak";
+var mapAPIKey = "AhGhZ-kNs-_3q0iqaynppJStvhH4mqt6S4zWhrfm9u7V4qHGPYPgkuA1AkZguL_g";
 
 var map, infobox;
 
